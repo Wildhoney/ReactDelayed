@@ -1,0 +1,31 @@
+{
+  "name": "react-delayed",
+  "version": "0.1.0",
+  "description": "Small component for delaying the mounting and unmounting of a child component for CSS animation purposes.",
+  "main": "dist/react-delayed.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wildhoney/ReactDelayed.git"
+  },
+  "keywords": [
+    "delayed",
+    "deferred",
+    "delay",
+    "delay",
+    "render",
+    "mount",
+    "unmount",
+    "css",
+    "animation",
+    "transition"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/ReactDelayed/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/ReactDelayed#readme"
+}
