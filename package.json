@@ -31,6 +31,11 @@
   "devDependencies": {
     "babel-preset-es2015": "~6.24.0",
     "babel-preset-es2016": "~6.24.1",
-    "babel-preset-es2017": "~6.24.1"
+    "babel-preset-es2017": "~6.24.1",
+    "taskfile": "~0.5.11"
+  },
+  "dependencies": {
+    "prop-types": "~15.5.8",
+    "react": "~15.4.2"
   }
 }
