@@ -5,5 +5,5 @@ const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 
-app.use(express.static(`${__dirname}/example`));
+app.use(express.static(`${__dirname}/..`));
 server.listen(port);
