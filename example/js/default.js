@@ -37,6 +37,8 @@ class Example extends Component {
         return (
             <main>
 
+                <h1>&lt;Delayed /&gt;</h1>
+
                 <section className="buttons">
                     <button onClick={() => this.setState({ modal: modalTypes.without })}>Without &lt;Delayed /&gt;</button>
                     <button onClick={() => this.setState({ modal: modalTypes.with })}>With &lt;Delayed /&gt;</button>

@@ -8,12 +8,30 @@
 main {
   @import './modal';
 
+  > h1 {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    text-transform: uppercase;
+    font-size: 9px;
+    padding: 5px 20px;
+    font-weight: normal;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+  }
+
   > section.buttons {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 50px);
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 10px;
+    }
 
     > button {
       border: 0;
@@ -21,11 +39,15 @@ main {
       color: white;
       padding: 30px 45px;
       margin: 0 10px;
-      border-radius: 3px;
       font-size: 12px;
       text-transform: uppercase;
       cursor: pointer;
       transition: background-color .25s;
+
+      @media (max-width: 480px) {
+        margin: 10px 0;
+        width: 90vw;
+      }
 
       &:first-of-type {
         background-color: rebeccapurple;
