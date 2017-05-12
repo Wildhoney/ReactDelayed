@@ -17,10 +17,12 @@
 
 ## Getting Started
 
-Use the `mountAfter` and `unmountAfter` props for delaying the mounting and unmounting of nested components.
+Use the optional `mountAfter` and `unmountAfter` props for delaying the mounting and unmounting of nested components.
 
 ```javascript
 <Delayed mounted={true} mountAfter={500} unmountAfter={500}>
     <img src="./images/nyan.gif" alt="Nyan" />
 </Delayed>
 ```
+
+When `mounted` is `false` a dummy node will be rendered, which defaults to `span` and can be changed with the `nodeName` prop.
