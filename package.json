@@ -4,13 +4,13 @@
   "description": "Small component for delaying the mounting and unmounting of a child component for CSS animation purposes.",
   "main": "dist/react-delayed.js",
   "scripts": {
-    "test": "npm run spec && npm run lint",
-    "lint": "xo src/*.js",
-    "spec": "nyc ava && npm run report",
-    "build": "webpack",
-    "watch": "webpack --watch",
+    "build": "webpack --config webpack.config.release.js",
     "sass": "node-sass ./example/css/default.scss -o ./example/css",
-    "start": "babel-node example/server/default.js",
+    "start": "webpack --config webpack.config.example.js && babel-node example/server/default.js",
+    "watch": "webpack --config webpack.config.example.js --watch",
+    "test": "npm run spec && npm run lint",
+    "spec": "nyc ava && npm run report",
+    "lint": "xo src/*.js",
     "report": "nyc report --reporter=html"
   },
   "repository": {
@@ -36,7 +36,8 @@
   },
   "homepage": "https://github.com/Wildhoney/ReactDelayed#readme",
   "dependencies": {
-    "react": ">=15.4.2"
+    "react": ">=15.4.2",
+    "react-dom": ">=15.4.2"
   },
   "devDependencies": {
     "async-delay": "~1.0.3",
@@ -59,7 +60,6 @@
     "nyc": "~10.2.0",
     "prop-types": "~15.5.8",
     "react-addons-test-utils": "~15.4.2",
-    "react-dom": "~15.4.2",
     "sinon": "~2.1.0",
     "webpack": "~2.3.2",
     "xo": "~0.18.1"
