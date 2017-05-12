@@ -64,7 +64,7 @@ export default class ReactDelayed extends Component {
 
         const mounted = type === 'mount';
         const timeout = this.props[`${type}After`];
-        const invoker = timeout === 0 ? (fn, _) => fn() : setTimeout;
+        const invoker = timeout === 0 ? fn => fn() : setTimeout;
 
         clearTimeout(this.state.deferred);
         const deferred = invoker(() => this.setState({ mounted }), timeout);

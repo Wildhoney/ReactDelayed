@@ -4,7 +4,9 @@
   "description": "Small component for delaying the mounting and unmounting of a child component for CSS animation purposes.",
   "main": "dist/react-delayed.js",
   "scripts": {
-    "test": "ava",
+    "test": "npm run spec && npm run lint",
+    "lint": "xo src/*.js",
+    "spec": "ava",
     "build": "webpack",
     "watch": "webpack --watch",
     "sass": "node-sass ./example/css/default.scss -o ./example/css",
@@ -32,10 +34,14 @@
     "url": "https://github.com/Wildhoney/ReactDelayed/issues"
   },
   "homepage": "https://github.com/Wildhoney/ReactDelayed#readme",
+  "dependencies": {
+    "react": ">=15.4.2"
+  },
   "devDependencies": {
     "async-delay": "~1.0.3",
     "ava": "~0.18.2",
     "babel-cli": "~6.24.0",
+    "babel-eslint": "~7.2.1",
     "babel-loader": "~6.4.1",
     "babel-polyfill": "~6.23.0",
     "babel-preset-es2015": "~6.24.0",
@@ -43,6 +49,8 @@
     "babel-preset-stage-0": "~6.22.0",
     "enzyme": "~2.8.0",
     "es6-symbol": "~3.1.1",
+    "eslint-config-xo-react": "~0.11.1",
+    "eslint-plugin-react": "~6.10.3",
     "express": "~4.15.2",
     "jsdom": "~9.12.0",
     "node-sass": "~4.5.1",
@@ -50,10 +58,8 @@
     "react-addons-test-utils": "~15.4.2",
     "react-dom": "~15.4.2",
     "sinon": "~2.1.0",
-    "webpack": "~2.3.2"
-  },
-  "dependencies": {
-    "react": ">=15.4.2"
+    "webpack": "~2.3.2",
+    "xo": "~0.18.1"
   },
   "ava": {
     "files": [
@@ -65,5 +71,40 @@
       "babel-polyfill",
       "./tests/helpers/browser-env.js"
     ]
+  },
+  "xo": {
+    "space": 4,
+    "esnext": true,
+    "parser": "babel-eslint",
+    "globals": [
+      "window",
+      "document"
+    ],
+    "extends": "xo-react",
+    "rules": {
+      "padded-blocks": "off",
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "react/jsx-tag-spacing": [
+        2,
+        "never"
+      ],
+      "no-unused-expressions": "off",
+      "react/no-unused-prop-types": "off",
+      "react/jsx-space-before-closing": [
+        2,
+        "always"
+      ],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js"
+          ]
+        }
+      ]
+    }
   }
 }
