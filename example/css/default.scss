@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, Arial, Tahoma, Helvetica, sans-serif;
+}
+
+main {
+  @import './modal';
+
+  > section.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+
+    > button {
+      border: 0;
+      outline: none;
+      color: white;
+      padding: 30px 45px;
+      margin: 0 10px;
+      border-radius: 3px;
+      font-size: 12px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color .25s;
+
+      &:first-of-type {
+        background-color: rebeccapurple;
+        border-bottom: 1px solid darken(rebeccapurple, 5);
+
+        &:hover {
+          background-color: darken(rebeccapurple, 5);
+        }
+      }
+
+      &:nth-of-type(2) {
+        background-color: darkolivegreen;
+        border-bottom: 1px solid darken(darkolivegreen, 5);
+
+        &:hover {
+          background-color: darken(darkolivegreen, 5);
+        }
+      }
+    }
+  }
+}

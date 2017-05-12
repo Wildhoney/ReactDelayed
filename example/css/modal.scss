@@ -1,0 +1,85 @@
+span.modal-container {
+
+  > a {
+    position: relative;
+    z-index: 101;
+  }
+
+  > section.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, .15);
+    transition: opacity .35s, visibility .35s;
+    visibility: visible;
+
+    &.closed {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    &.open > section.dialog {
+      transform: scale(1);
+    }
+
+    > section.dialog {
+      background-color: white;
+      box-shadow: 0 0 50px rgba(0, 0, 0, .35);
+      min-width: 200px;
+      text-align: left;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: scale(0.65);
+      overflow: hidden;
+
+      > header {
+        $height: 40px;
+        position: relative;
+        height: $height;
+        line-height: $height;
+
+        > h5 {
+          width: calc(70% - #{$height});
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding-left: 15px;
+          color: black;
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+
+        > a.close {
+          cursor: pointer;
+          height: $height;
+          line-height: $height;
+          width: $height;
+          position: absolute;
+          text-align: center;
+          top: 0;
+          right: 0;
+          text-decoration: none;
+          font-size: 20px;
+          border-left: 1px solid rgba(0, 0, 0, .1);
+          transition: background-color .15s;
+          user-select: none;
+          color: black;
+
+          &:hover {
+            background-color: white;
+          }
+        }
+      }
+
+      > div.content {
+        display: flex;
+      }
+    }
+  }
+}

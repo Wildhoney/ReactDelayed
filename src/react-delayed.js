@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -9,16 +9,16 @@ export default class ReactDelayed extends Component {
 
     /**
      * @constant state
-     * @type {{visible: boolean}}
+     * @type {{mounted: boolean}}
      */
-    state = { visible: false, deferred: null };
+    state = { mounted: false, deferred: null };
 
     /**
      * @constant propTypes
      * @type {{mountAfter: function, unmountAfter: function}}
      */
     static propTypes = {
-        visible: PropTypes.bool.isRequired,
+        mounted: PropTypes.bool.isRequired,
         mountAfter: PropTypes.number.isRequired,
         unmountAfter: PropTypes.number.isRequired,
         children: PropTypes.node.isRequired,
@@ -30,7 +30,7 @@ export default class ReactDelayed extends Component {
      * @type {{mountAfter: number, unmountAfter: number}}
      */
     static defaultProps = {
-        visible: false,
+        mounted: false,
         mountAfter: 0,
         unmountAfter: 0,
         children: <span />,
@@ -42,7 +42,7 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentDidMount() {
-        this.props.visible === true && this.handleVisibility('mount');
+        // this.props.mounted === true && this.handleVisibility('mount');
     }
 
     /**
@@ -51,8 +51,8 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentWillReceiveProps(nextProps) {
-        this.props.visible === false && nextProps.visible === true && this.handleVisibility('mount');
-        this.props.visible === true && nextProps.visible === false && this.handleVisibility('unmount');
+        this.props.mounted === false && nextProps.mounted === true && this.handleVisibility('mount');
+        this.props.mounted === true && nextProps.mounted === false && this.handleVisibility('unmount');
     }
 
     /**
@@ -62,12 +62,12 @@ export default class ReactDelayed extends Component {
      */
     handleVisibility(type) {
 
-        const visible = type === 'mount';
+        const mounted = type === 'mount';
         const timeout = this.props[`${type}After`];
         const invoker = timeout === 0 ? (fn, _) => fn() : setTimeout;
 
         clearTimeout(this.state.deferred);
-        const deferred = invoker(() => this.setState({ visible }));
+        const deferred = invoker(() => this.setState({ mounted }), timeout);
         this.setState({ deferred });
 
     }
@@ -77,7 +77,7 @@ export default class ReactDelayed extends Component {
      * @return {XML}
      */
     render() {
-        return this.state.visible ? this.props.children : <this.props.nodeName />;
+        return this.state.mounted ? this.props.children : <this.props.nodeName />;
     }
 
 }
