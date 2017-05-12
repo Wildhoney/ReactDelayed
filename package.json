@@ -33,19 +33,37 @@
   },
   "homepage": "https://github.com/Wildhoney/ReactDelayed#readme",
   "devDependencies": {
+    "async-delay": "~1.0.3",
+    "ava": "~0.18.2",
     "babel-cli": "~6.24.0",
     "babel-loader": "~6.4.1",
     "babel-polyfill": "~6.23.0",
     "babel-preset-es2015": "~6.24.0",
     "babel-preset-react": "~6.23.0",
+    "babel-preset-stage-0": "~6.22.0",
+    "enzyme": "~2.8.0",
     "es6-symbol": "~3.1.1",
     "express": "~4.15.2",
+    "jsdom": "~9.12.0",
     "node-sass": "~4.5.1",
     "prop-types": "~15.5.8",
+    "react-addons-test-utils": "~15.4.2",
     "react-dom": "~15.4.2",
+    "sinon": "~2.1.0",
     "webpack": "~2.3.2"
   },
   "dependencies": {
     "react": ">=15.4.2"
+  },
+  "ava": {
+    "files": [
+      "tests/*.test.js"
+    ],
+    "babel": "inherit",
+    "require": [
+      "babel-register",
+      "babel-polyfill",
+      "./tests/helpers/browser-env.js"
+    ]
   }
 }

@@ -42,7 +42,7 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentDidMount() {
-        // this.props.mounted === true && this.handleVisibility('mount');
+        this.props.mounted === true && this.handleVisibility('mount');
     }
 
     /**

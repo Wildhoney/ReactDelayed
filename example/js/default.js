@@ -4,6 +4,10 @@ import Symbol from 'es6-symbol';
 import Modal from './modal';
 import Delayed from '../../src/react-delayed';
 
+/**
+ * @constant modalTypes
+ * @type {{without: *, with: *}}
+ */
 const modalTypes = {
     without: Symbol('without'),
     with: Symbol('with')
