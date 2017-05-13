@@ -1121,9 +1121,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
+ * @constant types
+ * @type {{mount: string, unmounted: string}}
+ */
+var types = {
+  MOUNT: 'mount',
+  UNMOUNT: 'unmount'
+};
+
+/**
  * @class ReactDelayed
  * @extends {Component}
  */
+
 var ReactDelayed = function (_Component) {
   _inherits(ReactDelayed, _Component);
 
@@ -1168,7 +1178,7 @@ var ReactDelayed = function (_Component) {
      * @return {void}
      */
     value: function componentDidMount() {
-      this.props.mounted === true && this.handleVisibility('mount');
+      this.props.mounted === true && this.handleVisibility(types.MOUNT);
     }
 
     /**
@@ -1180,8 +1190,8 @@ var ReactDelayed = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      this.props.mounted === false && nextProps.mounted === true && this.handleVisibility('mount');
-      this.props.mounted === true && nextProps.mounted === false && this.handleVisibility('unmount');
+      this.props.mounted === false && nextProps.mounted === true && this.handleVisibility(types.MOUNT);
+      this.props.mounted === true && nextProps.mounted === false && this.handleVisibility(types.UNMOUNT);
     }
 
     /**
@@ -1195,7 +1205,7 @@ var ReactDelayed = function (_Component) {
     value: function handleVisibility(type) {
       var _this2 = this;
 
-      var mounted = type === 'mount';
+      var mounted = type === types.MOUNT;
       var timeout = this.props[type + 'After'];
       var invoker = timeout === 0 ? function (fn) {
         return fn();
