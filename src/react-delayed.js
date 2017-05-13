@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
+ * @constant types
+ * @type {{mount: string, unmounted: string}}
+ */
+const types = {
+    MOUNT: 'mount',
+    UNMOUNT: 'unmount'
+};
+
+/**
  * @class ReactDelayed
  * @extends {Component}
  */
@@ -42,7 +51,7 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentDidMount() {
-        this.props.mounted === true && this.handleVisibility('mount');
+        this.props.mounted === true && this.handleVisibility(types.MOUNT);
     }
 
     /**
@@ -51,8 +60,8 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentWillReceiveProps(nextProps) {
-        this.props.mounted === false && nextProps.mounted === true && this.handleVisibility('mount');
-        this.props.mounted === true && nextProps.mounted === false && this.handleVisibility('unmount');
+        this.props.mounted === false && nextProps.mounted === true && this.handleVisibility(types.MOUNT);
+        this.props.mounted === true && nextProps.mounted === false && this.handleVisibility(types.UNMOUNT);
     }
 
     /**
@@ -62,7 +71,7 @@ export default class ReactDelayed extends Component {
      */
     handleVisibility(type) {
 
-        const mounted = type === 'mount';
+        const mounted = type === types.MOUNT;
         const timeout = this.props[`${type}After`];
         const invoker = timeout === 0 ? fn => fn() : setTimeout;
 
