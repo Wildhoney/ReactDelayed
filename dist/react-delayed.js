@@ -1226,7 +1226,8 @@ var ReactDelayed = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return this.state.mounted ? this.props.children : _react2.default.createElement(this.props.nodeName, null);
+      var isFunction = typeof this.props.children === 'function';
+      return this.state.mounted ? isFunction ? this.props.children() : this.props.children : _react2.default.createElement(this.props.nodeName, null);
     }
   }]);
 
@@ -1237,7 +1238,7 @@ ReactDelayed.propTypes = {
   mounted: _propTypes2.default.bool.isRequired,
   mountAfter: _propTypes2.default.number.isRequired,
   unmountAfter: _propTypes2.default.number.isRequired,
-  children: _propTypes2.default.node.isRequired,
+  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.func]).isRequired,
   nodeName: _propTypes2.default.string.isRequired
 };
 ReactDelayed.defaultProps = {
