@@ -30,7 +30,7 @@ export default class ReactDelayed extends Component {
         mounted: PropTypes.bool.isRequired,
         mountAfter: PropTypes.number.isRequired,
         unmountAfter: PropTypes.number.isRequired,
-        children: PropTypes.node.isRequired,
+        children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
         nodeName: PropTypes.string.isRequired
     };
 
@@ -86,7 +86,8 @@ export default class ReactDelayed extends Component {
      * @return {XML}
      */
     render() {
-        return this.state.mounted ? this.props.children : <this.props.nodeName />;
+        const isFunction = typeof this.props.children === 'function';
+        return this.state.mounted ? (isFunction ? this.props.children() : this.props.children) : <this.props.nodeName />;
     }
 
 }
