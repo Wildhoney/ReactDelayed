@@ -26,3 +26,11 @@ Use the optional `mountAfter` and `unmountAfter` props for delaying the mounting
 ```
 
 When `mounted` is `false` a dummy node will be rendered, which defaults to `span` and can be changed with the `nodeName` prop.
+
+You're also able to pass a *thunk* as the `children` for truly deferred components.
+
+```javascript
+<Delayed mounted={true} mountAfter={500} unmountAfter={500}>
+    {() => <img src="./images/nyan.gif" alt="Nyan" />}
+</Delayed>
+```
