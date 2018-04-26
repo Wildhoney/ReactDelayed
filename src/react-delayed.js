@@ -51,7 +51,16 @@ export default class ReactDelayed extends Component {
      * @return {void}
      */
     componentDidMount() {
+        this.isComponentMounted = true;
         this.props.mounted === true && this.handleVisibility(types.MOUNT);
+    }
+
+    /**
+     * @method componentWillUnmount
+     * @return {void}
+     */
+    componentWillUnmount() {
+        this.isComponentMounted = false;
     }
 
     /**
@@ -76,7 +85,7 @@ export default class ReactDelayed extends Component {
         const invoker = timeout === 0 ? fn => fn() : setTimeout;
 
         clearTimeout(this.state.deferred);
-        const deferred = invoker(() => this.setState({ mounted }), timeout);
+        const deferred = invoker(() => this.isComponentMounted && this.setState({ mounted }), timeout);
         this.setState({ deferred });
 
     }
