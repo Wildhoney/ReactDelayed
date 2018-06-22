@@ -20,7 +20,7 @@ export default class ReactDelayed extends Component {
      * @constant state
      * @type {{mounted: boolean}}
      */
-    state = { mounted: typeof window === 'undefined', deferred: null };
+    state = { mounted: typeof window === 'undefined' ? this.props.mounted : false, deferred: null };
 
     /**
      * @constant propTypes
