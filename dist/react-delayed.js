@@ -1179,7 +1179,7 @@ var ReactDelayed = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactDelayed.__proto__ || Object.getPrototypeOf(ReactDelayed)).call.apply(_ref, [this].concat(args))), _this), _this.state = { mounted: false, deferred: null }, _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReactDelayed.__proto__ || Object.getPrototypeOf(ReactDelayed)).call.apply(_ref, [this].concat(args))), _this), _this.state = { mounted: typeof window === 'undefined', deferred: null }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   /**
